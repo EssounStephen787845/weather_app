@@ -11,6 +11,7 @@ class FirstScreen extends StatefulWidget {
 
 class _firstScreenState extends State<FirstScreen> {
   final String a = 'Ukraine';
+  List  index = <Widget>[];
 
   @override
   Widget build(BuildContext context) {
@@ -131,24 +132,26 @@ class _firstScreenState extends State<FirstScreen> {
               ),
             ),
             Expanded(
-              child: SizedBox(
+              child: SizedBox(width:MediaQuery.of(context).size.height,
                 height: MediaQuery.of(context).size.height / 7,
                 child: ListView.builder(
-                    itemCount: 30,
+                    itemCount: 30,padding:const EdgeInsets.only(left: 10),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, int) =>
-                        column(text: 'Now', text2: '-3', icon: Icons.cloud)),
+                        // ignore: unrelated_type_equality_checks
+                        column(text: 'Now', text2: '-3', icon: Icons.cloud_outlined,color:index == 0?Colors.white:Colors.transparent )),
               ),
             ),
             Container(
                 padding: const EdgeInsets.all(10),
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
+                        topLeft: Radius.circular(25),
+                        topRight: Radius.circular(25)),
                     color: Colors.white),
                 height: MediaQuery.of(context).size.height / 3.5,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Row(
@@ -157,13 +160,13 @@ class _firstScreenState extends State<FirstScreen> {
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             smallText(text: 'sunrise'),
-                            largeText(text: 'hello world')
+                            largeText(text: '7:38am')
                           ],
                         ),
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             smallText(text: 'sunset'),
-                            largeText(text: 'hello world')
+                            largeText(text: '3:38am')
                           ],
                         )
                       ],
@@ -177,13 +180,13 @@ class _firstScreenState extends State<FirstScreen> {
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             smallText(text: 'Precipitate'),
-                            largeText(text: 'hello world')
+                            largeText(text: '90%')
                           ],
                         ),
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             smallText(text: 'Humidity'),
-                            largeText(text: 'hello world')
+                            largeText(text: '77%')
                           ],
                         )
                       ],
@@ -197,13 +200,13 @@ class _firstScreenState extends State<FirstScreen> {
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             smallText(text: 'wind'),
-                            largeText(text: 'hello world')
+                            largeText(text: '11 km/h')
                           ],
                         ),
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             smallText(text: 'Pressure'),
-                            largeText(text: 'hello world')
+                            largeText(text: '1015 hPa')
                           ],
                         )
                       ],
@@ -219,18 +222,17 @@ class _firstScreenState extends State<FirstScreen> {
   Text largeText({String? text}) {
     return Text(
       text!.toUpperCase(),
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
     );
   }
 
   Text smallText({String? text}) {
     return Text(text!.toUpperCase(),
-        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400,color: Colors.grey));
+        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400,color: Colors.grey));
   }
 
-  Align column({String? text, String? text2, IconData? icon}) {
+  Align column({String? text, String? text2, IconData? icon,Color? color}) {
     return Align(
-      alignment: Alignment.centerLeft,
       child: Column(
         children: [
           Text(
@@ -241,15 +243,15 @@ class _firstScreenState extends State<FirstScreen> {
             height: 10,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Container(
-                height: MediaQuery.of(context).size.height / 10,
-                width: 40,
-                foregroundDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromARGB(111, 0, 0, 0)),
+                height: MediaQuery.of(context).size.height / 8.5,
+                width: MediaQuery.of(context).size.height/18,
+                
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  color:color,
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(25),
                 ),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

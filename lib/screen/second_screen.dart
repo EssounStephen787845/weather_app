@@ -46,7 +46,7 @@ class _NextDayssState extends State<NextDayss> {
                 leading: const Icon(Icons.handshake),
                 title: const Text('data',style: TextStyle(fontSize:20,fontWeight: FontWeight.w500)),
                 trailing: const Text('-11'),
-                tilePadding: const EdgeInsets.all(20),
+                tilePadding: const EdgeInsets.symmetric(horizontal: 20),
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 60),

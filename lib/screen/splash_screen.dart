@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   
 
   navigate() async {
-    await Future.delayed(const Duration(seconds: 5), () {
+    await Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => const FirstScreen()));
     });
@@ -26,12 +26,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    precacheImage(const AssetImage("images/splash.png"), context);
+    precacheImage(const AssetImage("images/spla_sh.jpg"), context);
 
     return Container(
       foregroundDecoration: const BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.fill, image: AssetImage('images/splash.png'))),
+              fit: BoxFit.fill, image: AssetImage('images/spla_sh.jpg'))),
     );
   }
 }
